@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container } from "@material-ui/core";
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
+import Home from "../src/components/Home/Home";
+// import EmojiDetails from "../src/components/EmojiDetails/EmojiDetails";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container maxWidth="xl">
+        <Routes>
+          <Route path="/" exact element={<Navigate to="/emojis" />}></Route>
+          <Route path="/emojis" exact element={<Home />}></Route>
+          <Route path="/emojis/search" exact element={<Home />}></Route>
+          {/* <Route path="/emojis/:id" exact element={<EmojiDetails />}></Route> */}
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
