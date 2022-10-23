@@ -17,12 +17,13 @@ export const getEmojis = async (req, res) => {
     const emojis = await EmojiModel.find()
       .sort({ _id: -1 })
       .limit(limitPages)
-       .skip(startIndex);
+      .skip(startIndex);
 
     res.json({
       data: emojis,
       currentPage: Number(page),
-      numberOfPages: Math.ceil(total / limitPages)});
+      numberOfPages: Math.ceil(total / limitPages),
+    });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -40,12 +41,10 @@ export const getEmojis = async (req, res) => {
 
 // export const likeEmoji = async(req, res) => {
 //     try {
-        
+
 //     } catch (error) {
-        
+
 //     }
 // }
-
-
 
 export default router;

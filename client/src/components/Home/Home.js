@@ -35,19 +35,19 @@ const Home = () => {
 
   return (
     <Grow in>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" className={classes.mainContainer}>
         <Grid
-          container
-          justifyContent="space-between"
-          alignItems="stretch"
-          spacing={3}
+          item
+          xs={12}
+          sm={6}
+          md={12}
+          xl={12}
           className={classes.gridContainer}
         >
-          <Grid item xs={12} sm={6} md={9}>
-            <Emojis setCurrentId={setCurrentId} />
-          </Grid>
+          <Emojis setCurrentId={setCurrentId} />
         </Grid>
-        <Grid item xs={12} sm={6} md={9}>
+
+        <Grid item xs={12} sm={6} md={12} xl={12}>
           <Paper className={classes.pagination} elevation={6}>
             <Pagination page={page} />
           </Paper>
