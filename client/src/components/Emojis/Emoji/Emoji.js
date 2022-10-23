@@ -10,10 +10,7 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core/";
-// import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-// import DeleteIcon from '@material-ui/icons/Delete';
-
-// import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 
@@ -22,51 +19,34 @@ import useStyles from "./emoji_style";
 
 const Emoji = ({ emoji, setCurrentId }) => {
   const dispatch = useDispatch();
+  const history = useNavigate();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  //   const Likes = () => {
-  //     if (emoji.likes.length > 0) {
-  //       return emoji.likes.find((like) => like === (user?.result?._id))
-  //         ? (
-  //           <><ThumbUpAltIcon fontSize="small" />&nbsp;{emoji.likes.length > 2 ? `You and ${emoji.likes.length - 1} others` : `${emoji.likes.length} like${emoji.likes.length > 1 ? 's' : ''}` }</>
-  //         ) : (
-  //           <><ThumbUpAltOutlined fontSize="small" />&nbsp;{emoji.likes.length} {emoji.likes.length === 1 ? 'Like' : 'Likes'}</>
-  //         );
-  //     }
+  // const Likes = () => {
+  //   if (emoji.likes.length > 0) {
+  //     return emoji.likes.find((like) => like === (user?.result?._id))
+  //       ? (
+  //         <><ThumbUpAltIcon fontSize="small" />&nbsp;{emoji.likes.length > 2 ? `You and ${emoji.likes.length - 1} others` : `${emoji.likes.length} like${emoji.likes.length > 1 ? 's' : ''}` }</>
+  //       ) : (
+  //         <><ThumbUpAltOutlined fontSize="small" />&nbsp;{emoji.likes.length} {emoji.likes.length === 1 ? 'Like' : 'Likes'}</>
+  //       );
+  //   }
 
-  //     return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
-  //   };
+  //   return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+  // };
+
+  const openEmoji = (e) => history(`/emojis/${emoji._id}`);
 
   return (
-    //   <Card className={classes.card}>
-    //     <CardMedia
-    //       className={classes.media}
-    //       image={emoji.emoji}
-    //       title={emoji.name}
-    //     />
-    //     <div className={classes.overlay}>
-    //       {/* <Typography variant="h2">{emoji.emoji}</Typography> */}
-    //       <Typography variant="h6">{emoji.name}</Typography>
-    //       <Typography variant="h6">{emoji.votes}</Typography>
-    //     </div>
-
-    //     <div className={classes.details}>
-    //       <Typography variant="body2" color="textSecondary" component="h2">
-    //         {emoji.name}
-    //       </Typography>
-    //     </div>
-    //   </Card>
-    // );
-
     <Card sx={{ maxWidth: 345 }} className={classes.media}>
       <Grid
         container
         spacing={0}
         direction="column"
         alignItems="center"
-        justify="center"
-        style={{ minHeight: "40vh" }}
+        justifyContent="center"
+        style={{ minHeight: "35vh" }}
       >
         <Typography gutterBottom variant="h2" component="div">
           {emoji.emoji}
@@ -80,10 +60,27 @@ const Emoji = ({ emoji, setCurrentId }) => {
           <Typography variant="body2" color="text.secondary">
             {emoji.group}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {emoji.likes}
+          </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Votar</Button>
-          <Button size="small">Ver</Button>
+          <Button
+            size="small"
+            color="secondary"
+            variant="contained"
+            onClick={() => dispatch(likeEmoji(emoji._id))}
+          >
+            Vote
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            onClick={openEmoji}
+          >
+            Show
+          </Button>
         </CardActions>
       </Grid>
     </Card>

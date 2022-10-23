@@ -1,5 +1,18 @@
 import * as api from "../api/index";
-import { FETCH_ALL, UPDATE, DELETE, START_LOADING, END_LOADING } from "../constants/actionTypes";
+import { FETCH_ALL, UPDATE, DELETE, START_LOADING, END_LOADING, FETCH_EMOJI } from "../constants/actionTypes";
+
+
+export const getEmoji = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await api.fetchEmoji(id);
+    dispatch({ type: FETCH_EMOJI, payload: {emoji: data} });
+    dispatch({ type: END_LOADING });
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getEmojis = (page) => async (dispatch) => {
   try {
@@ -11,6 +24,8 @@ export const getEmojis = (page) => async (dispatch) => {
     console.log(error);
   }
 };
+
+
 
 export const deleteEmoji = (id) => async (dispatch) => {
   try {

@@ -47,24 +47,6 @@ const Navbar = () => {
         <img component={Link} to="/" src={logo} alt="icon" height="50px" />
         <img src={vote} alt="icon" height="50px" className={classes.image} />
       </Link>
-      <Toolbar className={classes.toolbar}>
-        <div className={classes.profile}>
-          <Typography className={classes.userName} variant="h6">
-            {user?.result.name}
-          </Typography>
-          <Button
-            variant="contained"
-            className={classes.logout}
-            color="secondary"
-          >
-            Logout
-          </Button>
-        </div>
-
-        <Button component={Link} to="/auth" variant="contained" color="primary">
-          Sign In
-        </Button>
-      </Toolbar>
     </AppBar>
   );
 };

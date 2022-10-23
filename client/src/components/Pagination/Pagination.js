@@ -12,18 +12,16 @@ const Paginate = ({ page }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-       if (page) {
-        dispatch(getEmojis(page));
-       }
+    if (page) {
+      dispatch(getEmojis(page));
+    }
   }, [dispatch, page]);
-
 
   return (
     <Pagination
       classes={{ ul: classes.ul }}
       count={numberOfPages}
       page={Number(page) || 1}
-      variant="outlined"
       color="primary"
       renderItem={(item) => (
         <PaginationItem
@@ -35,6 +33,5 @@ const Paginate = ({ page }) => {
     />
   );
 };
-
 
 export default Paginate;
