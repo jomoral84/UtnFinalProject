@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 
 import EmojiModel from "../models/emojiModel.js";
 
@@ -39,30 +40,33 @@ export const getEmoji = async (req, res) => {
   }
 };
 
-// export const likeEmoji = async (req, res) => {
-//   const { id } = req.params;
+export const likeEmoji = async (req, res) => {
+  const { id } = req.params;
 
-//   if (!mongoose.Types.ObjectId.isValid(id))
-//     return res.status(404).send(`No emojis with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No emoji with id: ${id}`);
 
-//   const emoji = await EmojiModel.findById(id);
+  const emoji = await EmojiModel.findById(id);
+  const updatedEmoji = await EmojiModel.findByIdAndUpdate(
+    id,
+    { likes: emoji.likes + 1 },
+    { new: true }
+  );
 
-//   // const index = emoji.likes.findIndex((id) => id === String(req.userId));
+  res.json(updatedEmoji);
+};
 
-//   // if (index === -1) {
-//   //   // Likea el post
-//   //   emoji.likes.push(req.userId);
-//   // } else {
-//   //   emoji.likes = emoji.likes.filter((id) => id !== String(req.userId));
-//   // }
+export const getEmojisBySearch = async (req, res) => {
+  const { searchQuery } = req.query;
+  try {
+    const name = new RegExp(searchQuery, "i"); // El objeto RegExp se utiliza para hacer coincidir texto con un patrón. Ej: text, Text, TEXT
 
-//   emoji.likes.push(req.userId);
+    const emojis = await EmojiModel.find({ name });
 
-//   const updatedEmoji = await EmojiModel.findByIdAndUpdate(id, emoji, {
-//     new: true,
-//   });
-
-//   res.json(updatedEmoji);
-// };
+    res.json({ data: emojis });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export default router;

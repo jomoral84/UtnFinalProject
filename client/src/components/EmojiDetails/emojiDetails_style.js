@@ -6,10 +6,12 @@ export default makeStyles((theme) => ({
     objectFit: "cover",
     width: "600px",
     maxHeight: "600px",
+    
   },
   card: {
     display: "flex",
     width: "100%",
+   
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       flexDirection: "column",

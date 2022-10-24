@@ -7,8 +7,8 @@ const emojiSchema = mongoose.Schema({
   sub_group: String,
   codepoints: String,
   likes: {
-    type: [String],
-    default: [],
+    type: Number,
+    default: 0,
   },
   createdAt: {
     type: Date,

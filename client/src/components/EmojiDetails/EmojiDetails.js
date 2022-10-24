@@ -13,6 +13,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import { getEmoji, getEmojisBySearch } from "../../actions/emojis";
 import useStyles from "./emojiDetails_style";
+import Jaipur from "../../img/Jaipur.jpg";
 
 const emoji = () => {
   const { emoji, emojis, isLoading } = useSelector((state) => state.emojis);
@@ -44,7 +45,7 @@ const emoji = () => {
   }
 
   return (
-    <Paper style={{ padding: "100px", borderRadius: "15px" }} elevation={6}>
+    <Paper style={{ padding: "80px", borderRadius: "15px", backgroundImage: `url(${Jaipur})`}} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography variant="h3" component="h2">
@@ -54,14 +55,13 @@ const emoji = () => {
           <Typography variant="h6" component="h2">
             Group: {emoji.group} <br></br>
             Subgroup: {emoji.sub_group} <br></br>
-            Votes: {emoji.likes} 
+            Votes: {emoji.likes}
           </Typography>
         </div>
         <div className={classes.imageSection}>
           <Typography gutterBottom variant="h1" component="h2">
             {emoji.emoji}
           </Typography>
-          
         </div>
       </div>
     </Paper>

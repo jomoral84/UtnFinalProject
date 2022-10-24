@@ -1,45 +1,46 @@
 /* eslint-disable */
 
 import React, { useState, useEffect } from "react";
-import { AppBar, Avatar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Button, TextField } from "@material-ui/core";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import decode from "jwt-decode";
 
+import { getEmojisBySearch } from "../../actions/emojis";
 import useStyles from "./navbar_style";
 import vote from "../../img/vote.png";
 import logo from "../../img/logo.png";
 import * as actionType from "../../constants/actionTypes";
 
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [currentId, setCurrentId] = useState(0);
+  const [search, setSearch] = useState("");
   const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const query = useQuery();
+  const page = query.get("page") || 1;
 
-  // const logout = () => {
-  //   dispatch({ type: actionType.LOGOUT });
+  const searchEmoji = () => {
+    if (search.trim()) {
+      // Uso de Redux para la busqueda
+      dispatch(getEmojisBySearch({ search }));
+      history(`/emojis/search?searchQuery=${search || "none"}`);
+    } else {
+      history("/");
+    }
+  };
 
-  //   navigate("/auth");
-
-  //   setUser(null);
-  // };
-
-  // useEffect(() => {
-  //   const token = user?.token;
-
-  //   if (token) {
-  //     const decodedToken = decode(token);
-
-  //     if (decodedToken.exp * 1000 < new Date().getTime()) {
-  //       // Si se acaba el tiempo del token se deslogea al usuario
-  //       logout();
-  //     }
-  //   }
-
-  //   setUser(JSON.parse(localStorage.getItem("profile")));
-  // }, [location]);
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      searchEmoji();
+    }
+  };
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
@@ -47,6 +48,18 @@ const Navbar = () => {
         <img component={Link} to="/" src={logo} alt="icon" height="50px" />
         <img src={vote} alt="icon" height="50px" className={classes.image} />
       </Link>
+      <TextField
+        name="search"
+        variant="outlined"
+        label="Buscar Emojis"
+        onKeyDown={handleKeyPress}
+        fullWidth
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      ></TextField>
+      <Button onClick={searchEmoji} variant="contained" color="primary">
+        Buscar
+      </Button>
     </AppBar>
   );
 };

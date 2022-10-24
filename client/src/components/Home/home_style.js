@@ -12,6 +12,7 @@ export default makeStyles((theme) => ({
     marginTop: "1rem",
     marginBottom: "2rem",
     padding: "15px",
+    backgroundColor: "lightgrey" 
 
   },
   gridContainer: {
@@ -20,7 +21,7 @@ export default makeStyles((theme) => ({
     },
   },
   mainContainer: {
-    backgroundColor: "#616161",
+    backgroundColor: "#fff",
     paddingBottom: "3px"
   },
 }));

@@ -55,13 +55,9 @@ const Emoji = ({ emoji, setCurrentId }) => {
         <Typography gutterBottom variant="h6" component="div">
           {emoji.name}
         </Typography>
-
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {emoji.group}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {emoji.likes}
+            Votes: {emoji.likes}
           </Typography>
         </CardContent>
         <CardActions>
