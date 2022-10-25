@@ -23,9 +23,9 @@ const Emojis = ({ setCurrentId }) => {
       <CircularProgress />
     </Grid>
   ) : (
-    <Grid container alignItems="stretch" spacing={3}>
+    <Grid container alignItems="center" spacing={5} >
       {emojis?.map((emoji) => (
-        <Grid key={emoji._id} item xs={12} sm={12} md={6} lg={3}>
+        <Grid key={emoji._id} item xs={12} sm={6} md={6} lg={2}>
           <Emoji emoji={emoji} setCurrentId={setCurrentId} />
         </Grid>
       ))}

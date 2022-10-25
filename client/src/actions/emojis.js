@@ -36,6 +36,21 @@ export const getEmojis = (page) => async (dispatch) => {
   }
 };
 
+export const getEmojisBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+
+    const {
+      data: { data},
+    } = await api.fetchEmojisBySearch(searchQuery);
+
+    dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log("Hubo en error: ", error);
+  }
+};
+
 export const deleteEmoji = (id) => async (dispatch) => {
   try {
     await api.deleteEmoji(id);
@@ -55,20 +70,7 @@ export const likeEmoji = (id) => async (dispatch) => {
   }
 };
 
-export const getEmojisBySearch = (searchQuery) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
 
-    const {
-      data: { data },
-    } = await api.fetchEmojisBySearch(searchQuery);
-
-    dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    console.log("Hubo en error: ", error);
-  }
-};
 
 
 export const updateEmoji = (id, emoji) => async (dispatch) => {

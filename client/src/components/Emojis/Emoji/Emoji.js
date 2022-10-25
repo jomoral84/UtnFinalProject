@@ -39,10 +39,10 @@ const Emoji = ({ emoji, setCurrentId }) => {
   const openEmoji = (e) => history(`/emojis/${emoji._id}`);
 
   return (
-    <Card sx={{ maxWidth: 345 }} className={classes.media}>
-      <Grid
+    <Card className={classes.card} elevation={6}>
+      <Grid 
         container
-        spacing={0}
+        spacing={3}
         direction="column"
         alignItems="center"
         justifyContent="center"
