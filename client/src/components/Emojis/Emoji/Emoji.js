@@ -39,7 +39,7 @@ const Emoji = ({ emoji, setCurrentId }) => {
   const openEmoji = (e) => history(`/emojis/${emoji._id}`);
 
   return (
-    <Card className={classes.card} elevation={6}>
+    <Card className={classes.card} elevation={6} >
       <Grid 
         container
         spacing={3}
