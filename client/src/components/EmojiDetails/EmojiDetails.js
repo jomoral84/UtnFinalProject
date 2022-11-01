@@ -6,6 +6,8 @@ import {
   Typography,
   CircularProgress,
   Divider,
+  Button,
+  Link,
 } from "@material-ui/core/";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
@@ -22,9 +24,15 @@ const emoji = () => {
   const classes = useStyles();
   const { id } = useParams();
 
+   const toHome = () => {
+    history("/");
+   }
+ 
   useEffect(() => {
     dispatch(getEmoji(id));
   }, [id]);
+
+ 
 
   if (!emoji) {
     return (
@@ -45,7 +53,14 @@ const emoji = () => {
   }
 
   return (
-    <Paper style={{ padding: "80px", borderRadius: "15px", backgroundImage: `url(${Jaipur})`}} elevation={6}>
+    <Paper
+      style={{
+        padding: "80px",
+        borderRadius: "15px",
+        backgroundImage: `url(${Jaipur})`,
+      }}
+      elevation={6}
+    >
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography variant="h3" component="h2">
@@ -57,6 +72,11 @@ const emoji = () => {
             Subgroup: {emoji.sub_group} <br></br>
             Votes: {emoji.likes}
           </Typography>
+          <Divider style={{ margin: "23px 0" }} />
+
+          <Button size="large" variant="contained" color="primary" onClick={toHome}>
+            Back
+          </Button>
         </div>
         <div className={classes.imageSection}>
           <Typography gutterBottom variant="h1" component="h2">

@@ -10,7 +10,7 @@ export const getEmojis = async (req, res) => {
   const { page } = req.query;
 
   try {
-    const limitPages = 10;
+    const limitPages = 8;
     const startIndex = (Number(page) - 1) * limitPages; // Toma el startIndex de cada pagina
     const total = await EmojiModel.countDocuments({});
 

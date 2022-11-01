@@ -13,7 +13,7 @@ const Emojis = ({ setCurrentId }) => {
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
         <Typography variant="h3" component="h2">
-          No se encuentra el emoji
+           Emoji not found!
         </Typography>
       </Paper>
     );
@@ -23,9 +23,9 @@ const Emojis = ({ setCurrentId }) => {
       <CircularProgress />
     </Grid>
   ) : (
-    <Grid container alignItems="center" spacing={5} >
+    <Grid container spacing={4} direction="row"  justify="center"  alignItems="center" >
       {emojis?.map((emoji) => (
-        <Grid key={emoji._id} item xs={12} sm={6} md={6} lg={2}>
+        <Grid key={emoji._id} item xs={12} sm={12} md={6} lg={3}>
           <Emoji emoji={emoji} setCurrentId={setCurrentId} />
         </Grid>
       ))}

@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Jaipur from "../../../img/Jaipur.jpg"
+import Jaipur from "../../../img/Jaipur.jpg";
 
-export default makeStyles({
+export default makeStyles((theme) => ({
   media: {
     backgroundColor: "lightgrey",
     width: "400px",
@@ -19,8 +19,9 @@ export default makeStyles({
     borderRadius: "15px",
     height: "100%",
     position: "relative",
-    width: "280px",
-    backgroundImage: `url(${Jaipur})`
+    width: "auto",
+    backgroundImage: `url(${Jaipur})`,
+  
   },
   overlay: {
     position: "absolute",
@@ -47,4 +48,4 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
-});
+}));
