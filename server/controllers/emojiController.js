@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 
-
 import EmojiModel from "../models/emojiModel.js";
 
 const router = express.Router();
@@ -17,8 +16,7 @@ export const getEmojis = async (req, res) => {
     const emojis = await EmojiModel.find()
       .sort({ likes: -1 })
       .limit(limitPages)
-      .skip(startIndex)
-  
+      .skip(startIndex);
 
     res.json({
       data: emojis,
@@ -65,7 +63,9 @@ export const getEmojisBySearch = async (req, res) => {
 
     const emojis = await EmojiModel.find({ name });
 
-    res.json({ data: emojis });
+    res.json({
+      data: emojis,
+    });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

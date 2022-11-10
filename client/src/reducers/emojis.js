@@ -6,7 +6,7 @@ import {
   FETCH_EMOJI,
   LIKE,
   FETCH_BY_SEARCH,
-  UPDATE
+  UPDATE,
 } from "../constants/actionTypes";
 
 export default (state = { isLoading: true, emojis: [] }, action) => {

@@ -8,12 +8,11 @@ export default makeStyles((theme) => ({
     padding: "16px",
   },
   pagination: {
+    maxWidth: "auto",
     borderRadius: 4,
-    marginTop: "1rem",
-    marginBottom: "2rem",
+    marginTop: "15px",
     padding: "15px",
-    backgroundColor: "lightgrey" 
-
+    backgroundColor: "lightgrey",
   },
   gridContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -22,6 +21,6 @@ export default makeStyles((theme) => ({
   },
   mainContainer: {
     backgroundColor: "#fff",
-    paddingBottom: "3px"
+    paddingBottom: "3px",
   },
 }));

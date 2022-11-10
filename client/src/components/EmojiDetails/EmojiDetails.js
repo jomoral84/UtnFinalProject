@@ -9,6 +9,8 @@ import {
   Button,
   Link,
 } from "@material-ui/core/";
+
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useParams, useNavigate } from "react-router-dom";
@@ -24,15 +26,13 @@ const emoji = () => {
   const classes = useStyles();
   const { id } = useParams();
 
-   const toHome = () => {
+  const toHome = () => {
     history("/");
-   }
- 
+  };
+
   useEffect(() => {
     dispatch(getEmoji(id));
   }, [id]);
-
- 
 
   if (!emoji) {
     return (
@@ -74,7 +74,13 @@ const emoji = () => {
           </Typography>
           <Divider style={{ margin: "23px 0" }} />
 
-          <Button size="large" variant="contained" color="primary" onClick={toHome}>
+          <Button
+            size="large"
+            variant="contained"
+            color="primary"
+            onClick={toHome}
+          >
+            <ArrowBackIosIcon />
             Back
           </Button>
         </div>

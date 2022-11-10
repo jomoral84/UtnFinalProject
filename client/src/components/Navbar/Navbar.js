@@ -2,17 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { AppBar, Button, TextField, Grid } from "@material-ui/core";
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { getEmojisBySearch } from "../../actions/emojis";
 import useStyles from "./navbar_style";
-import vote from "../../img/vote.png";
+import vote from "../../img/vote4.png";
 import logo from "../../img/logo.png";
-import * as actionType from "../../constants/actionTypes";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -24,8 +20,6 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const classes = useStyles();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
   const query = useQuery();
   const page = query.get("page") || 1;
 
@@ -44,8 +38,6 @@ const Navbar = () => {
       searchEmoji();
     }
   };
-
-  
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
