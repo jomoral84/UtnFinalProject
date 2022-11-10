@@ -21,6 +21,7 @@ export default makeStyles((theme) => ({
     position: "relative",
     width: "auto",
     backgroundImage: `url(${Jaipur})`,
+    opacity: "0.9"
   
   },
   overlay: {

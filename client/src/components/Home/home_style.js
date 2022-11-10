@@ -13,6 +13,7 @@ export default makeStyles((theme) => ({
     marginTop: "15px",
     padding: "15px",
     backgroundColor: "lightgrey",
+    opacity: "0.9",
   },
   gridContainer: {
     [theme.breakpoints.down("xs")]: {
@@ -20,7 +21,7 @@ export default makeStyles((theme) => ({
     },
   },
   mainContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     paddingBottom: "3px",
   },
 }));

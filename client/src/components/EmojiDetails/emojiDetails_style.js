@@ -12,6 +12,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     width: "100%",
    
+   
     [theme.breakpoints.down("sm")]: {
       flexWrap: "wrap",
       flexDirection: "column",
@@ -42,6 +43,7 @@ export default makeStyles((theme) => ({
     padding: "20px",
     borderRadius: "15px",
     height: "39vh",
+    opacity: "0.9"
   },
   commentsOuterContainer: {
     display: "flex",

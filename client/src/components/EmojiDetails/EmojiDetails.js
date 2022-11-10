@@ -36,9 +36,16 @@ const emoji = () => {
 
   if (!emoji) {
     return (
-      <Paper elevation={6} className={classes.loadingPaper}>
+      <Paper
+        style={{
+          backgroundImage: `url(${Jaipur})`,
+          opacity: "0.9",
+        }}
+        elevation={6}
+        className={classes.loadingPaper}
+      >
         <Typography variant="h3" component="h2">
-          No existe el emoji
+          Emoji not found!
         </Typography>
       </Paper>
     );
@@ -58,6 +65,7 @@ const emoji = () => {
         padding: "80px",
         borderRadius: "15px",
         backgroundImage: `url(${Jaipur})`,
+        opacity: "0.9",
       }}
       elevation={6}
     >
