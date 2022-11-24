@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import emojiRoutes from "./routes/emojiRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+
 
 dotenv.config({ path: "./config.env" });
 
@@ -15,7 +15,6 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/emojis", emojiRoutes);
-app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello to Emojis API");

@@ -6,12 +6,10 @@ import {
   Grow,
   Grid,
   Paper,
-  AppBar,
-  TextField,
-  Button,
+  
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { getEmojis } from "../../actions/emojis";
 import Emojis from "../Emojis/Emojis";
