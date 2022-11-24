@@ -11,7 +11,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 import { getEmojis } from "../../actions/emojis";
 import Emojis from "../Emojis/Emojis";
@@ -48,7 +48,7 @@ const Home = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={12} xl={12}>
-          <Paper className={classes.pagination} elevation={3} >
+          <Paper className={classes.pagination} elevation={3}>
             <Pagination page={page} />
           </Paper>
         </Grid>
